@@ -49,8 +49,9 @@ module.exports = {
                   // https://babeljs.io/docs/en/babel-preset-env
                   // https://github.com/browserslist/browserslist
                   // https://browserl.ist/
+                  // https://github.com/zloirock/core-js#babelpreset-env
                   useBuiltIns: "usage", // Adds specific imports for polyfills when they are used in each file
-                  corejs: { version: 3.4, proposals: true }, // Specify the core-js version. Must match the version in package.json
+                  corejs: { version: 3.8, proposals: true }, // Specify the core-js version. Must match the version in package.json
                   debug: false // Output the targets/plugins, used when compiling
                 }
               ],
