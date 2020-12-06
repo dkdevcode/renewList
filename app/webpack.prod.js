@@ -126,17 +126,39 @@ let merged_config = merge(common, {
         test: /\.custom\.scss$/i,
         include: /[\\/]global[\\/]/,
         use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
           {
-            loader: "postcss-loader", // Run post css actions
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              plugins: function() {
-                return [require("precss"), require("autoprefixer")];
+              publicPath: (resourcePath, context) => {
+                // publicPath is the relative path of the resource to the context
+                // e.g. for ./css/admin/main.css the publicPath will be ../../
+                // while for ./css/main.css the publicPath will be ../
+                // https://webpack.js.org/plugins/mini-css-extract-plugin/#the-publicpath-option-as-function
+                return path.relative(path.dirname(resourcePath), context) + '/';
+              },
+            }
+          },
+          {
+            // translates CSS into CommonJS modules
+            loader: "css-loader"
+          },
+          {
+            // run post css actions
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: function() {
+                  return [
+                    require("autoprefixer")
+                  ];
+                }
               }
             }
           },
-          "sass-loader"
+          {
+            // compiles Sass to CSS
+            loader: "sass-loader"
+          }
         ]
       }
     ]
