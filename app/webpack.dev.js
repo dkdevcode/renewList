@@ -21,9 +21,15 @@ let merged_config = merge(common, {
 
   devtool: "inline-source-map", // Maps complied code back to original source code
 
+  target: "web", //fix for issues with liveReload //https://github.com/webpack/webpack-dev-server/issues/2758
+
   devServer: {
-    contentBase: "./dist", // Tells webpack-dev-server to serve files from the dist directory on localhost:8080
-    hot: false // Allows modules to be updated at runtime without the need for a full refresh
+    contentBase: PATH_DIST, // Tells webpack-dev-server to serve files from the dist directory on localhost:8080
+    hot: false, // Allows modules to be updated at runtime without the need for a full refresh
+    watchContentBase: true,
+    open: true,
+    port: 8000,
+    liveReload: true
   },
 
   optimization: {
