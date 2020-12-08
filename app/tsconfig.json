@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // target latest version of ECMAScript.
+    "target": "esnext",
+    // specify module code generation
+    "module": "es6",
+    // don't emit, allow Babel to transform files.
+    "noEmit": true,
+    // path to output directory
+    "outDir": "./dist/",
+    // generates corresponding .map file
+    "sourceMap": true,
+    // use typescript to transpile jsx to js
+    "jsx": "react",
+    // allow JavaScript files to be compiled
+    "allowJs": true,
+    // allow default imports from modules with no default export
+    "allowSyntheticDefaultImports": true,
+    // import non-ES modules as default imports
+    "esModuleInterop": true,
+    // raise error on expressions and declarations with an implied any type
+    "noImplicitAny": true
+  }
+}
