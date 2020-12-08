@@ -7,7 +7,7 @@
     "scripts": {
         "watch": "webpack --watch",
         "start": "run-p start:dev start:api",
-        "start:dev": "webpack serve --open chrome --config webpack.dev.js --port 8000",
+        "start:dev": "webpack serve --config webpack.dev.js",
         "start:api": "json-server tools/generator.js --port 3000",
         "build": "webpack --config webpack.prod.js"
     },
@@ -64,7 +64,6 @@
             "not op_mini all"
         ],
         "development": [
-            "ie 11",
             "edge >= 17",
             "chrome >= 75",
             "firefox >= 68"
